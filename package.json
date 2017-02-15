@@ -1,0 +1,35 @@
+{
+  "name": "he-date",
+  "version": "1.0.0",
+  "description": "A javascript Date object with Hebrew calendar context",
+  "main": "HeDate.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test",
+    "minify": "uglifyjs -mcr HeDate --keep-fnames --comments=/MIT/ HeDate.js > HeDate.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abrahamos/he-date.git"
+  },
+  "keywords": [
+    "he-date",
+    "hebrew",
+    "calendar",
+    "date"
+  ],
+  "author": "Avraham Osteicher",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "3.5.0",
+    "mocha": "3.2.0",
+    "uglify-js": "2.6.2"
+  },
+  "bugs": {
+    "url": "https://github.com/abrahamos/he-date/issues"
+  },
+  "homepage": "https://github.com/abrahamos/he-date#readme"
+}
