@@ -9,13 +9,13 @@
 
   /* ================ Helpers ================ */
 
-  const MONTH_LENGTH = 765433; // in parts TODO: portions?
-  const DAY_LENGTH = 25920; // in parts
-  const CYCLE_MONTHS = 235; // moon's cycle in months
-  const CYCLE_YEARS = 19; // moon's cycle in sun years
-  const DISTANCE = 2092591; // days between Hebrew base (29/5/0) to Gregorian 1/1/1970
-  const INVALID = 'Invalid Date';
-  const WEEKDAYS = [
+  var MONTH_LENGTH = 765433; // in parts TODO: portions?
+  var DAY_LENGTH = 25920; // in parts
+  var CYCLE_MONTHS = 235; // moon's cycle in months
+  var CYCLE_YEARS = 19; // moon's cycle in sun years
+  var DISTANCE = 2092591; // days between Hebrew base (29/5/0) to Gregorian 1/1/1970
+  var INVALID = 'Invalid Date';
+  var WEEKDAYS = [
     'Sun',
     'Mon',
     'Tue',
@@ -24,7 +24,7 @@
     'Fri',
     'Sat'
   ];
-  const MONTHS = [
+  var MONTHS = [
     'Tishri',
     'Heshvan',
     'Kislev',
@@ -46,7 +46,7 @@
    * src - Array || Argument object
    * dest - Array
    */
-  const defaults = function(src, dest) {
+  var defaults = function(src, dest) {
     var i = 0;
     var len = Math.min(src.length, dest.length);
     while(i < len) {
@@ -57,11 +57,11 @@
   }
 
   /* like `x % y` even for negative numbers */
-  const modulo = function(x, y) {
+  var modulo = function(x, y) {
     return x - y * Math.floor(x / y);
   }
 
-  const getMonthName = function(monthNum, leap) {
+  var getMonthName = function(monthNum, leap) {
     if(!leap) {
       if(monthNum == 5) {
         return MONTHS[13];
@@ -72,29 +72,29 @@
     return MONTHS[monthNum];
   }
 
-  const ms2days = function(ms) {
+  var ms2days = function(ms) {
     return Math.floor(ms / 86400000);
   }
 
-  const getDaysSinceEpoch = function(date) {
+  var getDaysSinceEpoch = function(date) {
     return ms2days(date.getTime() - date.getTimezoneOffset() * 60000);
   }
 
-  const getUTCDaysSinceEpoch = function(date) {
+  var getUTCDaysSinceEpoch = function(date) {
     return ms2days(date.getTime());
   }
 
-  const setNewDate = function(newDateInfo) {
+  var setNewDate = function(newDateInfo) {
     var newDateDays = hebrew2days.apply(null, newDateInfo);
     return Date.prototype.setFullYear.call(this, 1970, 0, newDateDays + 1);
   }
 
-  const setUTCNewDate = function(newDateInfo) {
+  var setUTCNewDate = function(newDateInfo) {
     var newDateDays = hebrew2days.apply(null, newDateInfo);
     return Date.prototype.setUTCFullYear.call(this, 1970, 0, newDateDays + 1);
   }
 
-  const stringify = function(daysSinceEpoch) {
+  var stringify = function(daysSinceEpoch) {
     var dateInfo = days2hebrew(daysSinceEpoch);
     var weekday = (daysSinceEpoch + 4) % 7;
     weekday = WEEKDAYS[weekday];
@@ -107,7 +107,7 @@
    * months - till the beginnig of current year
    * leap - Boolean
    */
-  const getNextYearInDays = function(months, leap) {
+  var getNextYearInDays = function(months, leap) {
     var yearLength = 12 + leap;
     return getNewYearInDays(months + yearLength);
   }
@@ -119,12 +119,12 @@
    *   (0)  Heshvan has 29 days, Kislev has 30 days
    *   (-1) both have 29 days
    */
-  const getYearMode = function(daysSinceEpoch, nextYearInDays) {
+  var getYearMode = function(daysSinceEpoch, nextYearInDays) {
     var yearLength = nextYearInDays - daysSinceEpoch;
     return yearLength % 10 - 4;
   }
 
-  const isLeap = function(year) {
+  var isLeap = function(year) {
     var reminder = modulo(year, CYCLE_YEARS);
     return Boolean([2,5,7,10,13,16,18].indexOf(reminder) + 1);
   }
@@ -146,7 +146,7 @@
    * months - zero-based
    * returns year - zero-based
    */
-  const months2year = function(months) {
+  var months2year = function(months) {
     return Math.floor((months + 38) * CYCLE_YEARS / CYCLE_MONTHS) - 3;
   }
 
@@ -154,7 +154,7 @@
    * year - zero-based
    * returns months - zero-based
    */
-  const year2months = function(year) {
+  var year2months = function(year) {
     return Math.ceil((year + 3) * CYCLE_MONTHS / CYCLE_YEARS) - 38;
   }
 
@@ -162,7 +162,7 @@
    * days - since Hebrew base (29/5/0) zero-based
    * returns months - zero-based
    */
-  const days2yearsInMonths = function(daysSinceHebrewBase) {
+  var days2yearsInMonths = function(daysSinceHebrewBase) {
     var parts, months, year;
     parts = daysSinceHebrewBase * DAY_LENGTH;
     months = parts / MONTH_LENGTH;
@@ -177,7 +177,7 @@
    * returns days till the beginnig of year
    */
   // TODO: improve this function - structure and line length
-  const getNewYearInDays = function(months) {
+  var getNewYearInDays = function(months) {
 
     var parts, days, result;
 
@@ -221,7 +221,7 @@
   /* ================ Conversion ================ */
 
   /* days since 1/1/1970 zero-based */
-  const days2hebrew = function(days) {
+  var days2hebrew = function(days) {
 
     days += DISTANCE;
 
@@ -263,7 +263,7 @@
   }
 
   /* month - zero-based */
-  const hebrew2days = function(year, month, date) {
+  var hebrew2days = function(year, month, date) {
 
     // change value from to zero-based
     date--;
