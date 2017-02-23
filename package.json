@@ -1,6 +1,6 @@
 {
   "name": "he-date",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A javascript Date object with Hebrew calendar context",
   "main": "HeDate.js",
   "directories": {
