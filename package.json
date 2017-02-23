@@ -20,7 +20,10 @@
     "calendar",
     "date"
   ],
-  "author": "Avraham Osteicher",
+  "author": {
+    "name": "Avraham Osteicher",
+    "email": "aharone27@gmail.com"
+  },
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
