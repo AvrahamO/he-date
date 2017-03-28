@@ -4,6 +4,7 @@
 A javascript Date object with Hebrew calendar context
 
 [![Build Status][build-badge]][build-link]
+[![Coverage Status][coverage-badge]][coverage-link]
 [![npm Version][npm-badge]][npm-link]
 [![GitHub License][license-badge]][license-link]
 
@@ -79,10 +80,12 @@ try **Hebcal**.
 
   [build-badge]: https://travis-ci.org/abrahamos/he-date.svg?branch=master
   [build-link]: https://travis-ci.org/abrahamos/he-date
+  [coverage-badge]: https://coveralls.io/repos/github/abrahamos/he-date/badge.svg?branch=master
+  [coverage-link]: https://coveralls.io/github/abrahamos/he-date?branch=master
   [npm-badge]: https://badge.fury.io/js/he-date.svg
   [npm-link]: https://badge.fury.io/js/he-date
   [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
-  [license-link]: https://raw.githubusercontent.com/abrahamos/he-date/development/LICENSE
+  [license-link]: https://raw.githubusercontent.com/abrahamos/he-date/master/LICENSE
 
   [source]: https://raw.githubusercontent.com/abrahamos/he-date/master/HeDate.js
   [minified]: https://raw.githubusercontent.com/abrahamos/he-date/master/HeDate.min.js
