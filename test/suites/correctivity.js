@@ -85,6 +85,27 @@ var testCases = [
   [5796, 6, 1,  'Sat 01 Nisan 5796',   'Mar 29 2036']
 ]
 
+var monthContext = [
+
+  // each row contains details as follow:
+  // [<initial-year>, <initial-month>, <changed-year>, <expected-month>]
+
+  // normal year to normal year
+  [5777, 5, 5778, 5],
+
+  // normal year to leap year
+  [5777, 5, 5779, 6],
+  [5777, 4, 5779, 4],
+
+  // leap year to leap year
+  [5776, 6, 5779, 6],
+  [5776, 5, 5779, 5],
+
+  // leap year to normal year
+  [5779, 6, 5777, 5],
+  [5779, 5, 5777, 5],
+]
+
 describe('HeDate Correctivity', function() {
   it('Should set date info correctly with respect to the Gregorian calendar', function() {
     testCases.forEach(function(t) {
@@ -96,6 +117,17 @@ describe('HeDate Correctivity', function() {
       assert.equal(hdate.getDate(), t[2], 'getDate ' + testNums);
       assert.equal(hdate.toDateString(), t[3], 'toDateString ' + testNums);
       assert.equal(hdate.getTime(), new Date(t[4]).getTime(), 'getTime ' + testNums);
+    })
+  })
+
+  it('Should keep month context when year is changed by setFullYear', function() {
+    monthContext.forEach(function(t) {
+      var date = new HeDate(t[0], t[1]);
+      date.setFullYear(t[2])
+      assert.equal(date.getMonth(), t[3], 'setFullYear ' + t)
+      var date = new HeDate(HeDate.UTC(t[0], t[1]));
+      date.setUTCFullYear(t[2])
+      assert.equal(date.getUTCMonth(), t[3], 'setUTCFullYear ' + t)
     })
   })
 })

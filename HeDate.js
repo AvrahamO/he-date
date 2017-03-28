@@ -214,7 +214,14 @@
 
   }
 
+  // returns 0, 1 or -1
+  var getMonthContext = function(month, year1, year2) {
+    var leap1 = isLeap(year1 - 1);
+    var leap2 = isLeap(year2 - 1);
 
+    if(month < 5 + leap1) return 0;
+    return leap2 - leap1;
+  }
 
 
 
@@ -376,6 +383,7 @@
       value: function setFullYear() {
         var days = getDaysSinceEpoch(this);
         var oldDate = days2hebrew(days);
+        oldDate.month += getMonthContext(oldDate.month, oldDate.year, arguments[0])
         var newDate = defaults(arguments, [NaN, oldDate.month, oldDate.date]);
         return setNewDate.call(this, newDate);
       }
@@ -406,6 +414,7 @@
       value: function setUTCFullYear() {
         var days = getUTCDaysSinceEpoch(this);
         var oldDate = days2hebrew(days);
+        oldDate.month += getMonthContext(oldDate.month, oldDate.year, arguments[0])
         var newDate = defaults(arguments, [NaN, oldDate.month, oldDate.date]);
         return setUTCNewDate.call(this, newDate);
       }
