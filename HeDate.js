@@ -296,7 +296,7 @@
   /* ================ Main ================ */
 
   function HeDate() {
-    if(!this || !this.constructor.toString().match(/^function HeDate\(\)/)) {
+    if(!(this instanceof HeDate)) {
       return new HeDate().toString();
     }
 
