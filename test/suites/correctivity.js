@@ -42,11 +42,11 @@ var testCases = [
   // test for months since 'Adar I' in a leap year
   [5779, 5,  1, 'Wed 01 Adar I 5779',  'Feb 06 2019'],
   [5779, 6,  1, 'Fri 01 Adar II 5779', 'Mar 08 2019'],
-  [5779, 7,  1, 'Sun 01 Nisan 5779',   'Apr 07 2019'],
+  [5779, 7,  1, 'Sat 01 Nisan 5779',   'Apr 06 2019'],
   [5779, 8,  1, 'Mon 01 Iyar 5779',    'May 06 2019'],
-  [5779, 9,  1, 'Wed 01 Sivan 5779',   'Jun 05 2019'],
+  [5779, 9,  1, 'Tue 01 Sivan 5779',   'Jun 04 2019'],
   [5779, 10, 1, 'Thu 01 Tamuz 5779',   'Jul 04 2019'],
-  [5779, 11, 1, 'Sat 01 Av 5779',      'Aug 03 2019'],
+  [5779, 11, 1, 'Fri 01 Av 5779',      'Aug 02 2019'],
   [5779, 12, 1, 'Sun 01 Elul 5779',    'Sep 01 2019'],
 
   // year determining:

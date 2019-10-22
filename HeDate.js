@@ -253,7 +253,7 @@
       days -= 0.5;
     }
 
-    if(days > 176) days -= leap;
+    if(days > 176) days -= leap * 0.5;
 
     var month = Math.floor(days / 29.5);
     var date = Math.floor(days % 29.5);
@@ -289,9 +289,10 @@
     var nextYear = getNextYearInDays(months, leap);
     var mode = getYearMode(days, nextYear, leap);
 
-    days += Math.ceil(month * 29.5);
+    days += month * 29.5;
     if(month > 1 && mode == 1 || month > 2) days += mode;
-    if(month > 5) days += leap;
+    if(month > 5) days += leap * 0.5;
+    days = Math.ceil(days);
 
     days += date;
 
